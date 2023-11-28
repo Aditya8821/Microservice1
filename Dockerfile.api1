@@ -1,0 +1,10 @@
+FROM python:3.8
+
+WORKDIR /app
+
+COPY ecommerce_api.py .
+COPY products.txt .
+
+RUN pip install flask
+
+CMD ["python", "ecommerce_api.py"]

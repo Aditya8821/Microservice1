@@ -1,0 +1,4 @@
+1,Iphone14,150000,250
+2,Samsung S23 Ultra,120000,200
+3,Samsung S21 FE,35000,200
+4,Nokia,3000,75
