@@ -1,10 +1,20 @@
-FROM python:3.8
+FROM python:3.8-slim
+
 
 WORKDIR /app
 
-COPY ecommerce_api.py .
-COPY products.txt .
+# Copy the current directory contents into the container at /app
+COPY . /app
 
-RUN pip install flask
+# Install any needed packages specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["python", "ecommerce_api.py"]
+# Make port 5000 available to the world outside this container
+EXPOSE 5000
+
+
+ENV FLASK_APP=ecommerce_api.py
+
+# Run app.py when the container launches
+CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]
+
