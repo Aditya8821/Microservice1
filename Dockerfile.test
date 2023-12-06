@@ -1,0 +1,16 @@
+# Dockerfile.test
+
+FROM python:3.8-slim
+
+WORKDIR /app
+
+# Copy only the files needed for testing
+COPY . /app
+COPY requirements.txt /app
+COPY test_ecommerce_api.py /app
+
+# Install testing dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Run the tests
+CMD ["python", "-m", "unittest", "test_ecommerce_api.py"]
