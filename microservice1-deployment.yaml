@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservice1-deployment
+spec:
+  replicas: 1  # Adjust as needed
+  selector:
+    matchLabels:
+      app: microservice1
+  template:
+    metadata:
+      labels:
+        app: microservice1
+    spec:
+      imagePullSecrets:
+      - name: ecr-secret
+      containers:
+      - name: microservice1
+        image: adityaverticurl/microservice1:latest  # Replace with your Docker Hub username
+        ports:
+        - containerPort: 5000
